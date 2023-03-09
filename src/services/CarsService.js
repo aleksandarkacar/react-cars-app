@@ -4,10 +4,19 @@ class CarsService {
     this.axios = httpService.axiosInstance;
   }
 
-  getAll = () => {
-    const promise = this.axios.get("/cars");
-    const dataPromise = promise.then((response) => response.data);
-    return dataPromise;
+  getAll = async () => {
+    const response = await this.axios.get("/cars");
+    return response.data;
+  };
+
+  create = async (newCar) => {
+    if (newCar.isAutomatic) {
+      newCar.IsAutomatic = true;
+    } else {
+      newCar.isAutomatic = false;
+    }
+
+    return await this.axios.post("/cars", newCar);
   };
 }
 const carsService = new CarsService();
