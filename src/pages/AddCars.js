@@ -7,7 +7,7 @@ export const AddCars = () => {
   const [newCar, setNewCar] = useState({
     brand: "",
     model: "",
-    year: 0,
+    year: 1990,
     maxSpeed: 0,
     isAutomatic: true,
     engine: "",

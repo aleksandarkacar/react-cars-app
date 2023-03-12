@@ -109,7 +109,7 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
             setNewCar({
               brand: "",
               model: "",
-              year: 0,
+              year: 1990,
               maxSpeed: 0,
               isAutomatic: true,
               engine: "",
@@ -118,6 +118,22 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
           }}
         >
           Reset
+        </button>
+
+        <button
+          onClick={() => {
+            alert(`Current Values: 
+            brand: ${newCar.brand} 
+            model: ${newCar.model} 
+            year: ${newCar.year} 
+            max speed: ${newCar.maxSpeed} 
+            automatic?: ${newCar.isAutomatic} 
+            engine: ${newCar.engine} 
+            number of doors: ${newCar.numberOfDoors} 
+            `);
+          }}
+        >
+          Preview
         </button>
       </div>
     </div>
