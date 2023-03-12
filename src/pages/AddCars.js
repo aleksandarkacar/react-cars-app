@@ -10,7 +10,7 @@ export const AddCars = () => {
     year: 1990,
     maxSpeed: 0,
     isAutomatic: true,
-    engine: "",
+    engine: "petrol",
     numberOfDoors: 0,
   });
   const history = useHistory();

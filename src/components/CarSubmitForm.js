@@ -9,6 +9,8 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
           <input
             value={newCar.brand}
             onChange={(e) => setNewCar({ ...newCar, brand: e.target.value })}
+            required
+            minlength="2"
           ></input>
         </div>
 
@@ -17,6 +19,8 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
           <input
             value={newCar.model}
             onChange={(e) => setNewCar({ ...newCar, model: e.target.value })}
+            required
+            minlength="2"
           ></input>
         </div>
 
@@ -62,16 +66,16 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
             <label>Engine: </label>
             <input
               type="radio"
-              value="diesel"
-              checked={newCar.engine === "diesel"}
-            />
-            Diesel
-            <input
-              type="radio"
               value="petrol"
               checked={newCar.engine === "petrol"}
             />
             Petrol
+            <input
+              type="radio"
+              value="diesel"
+              checked={newCar.engine === "diesel"}
+            />
+            Diesel
             <input
               type="radio"
               value="electric"
@@ -96,7 +100,8 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
             onChange={(e) =>
               setNewCar({ ...newCar, numberOfDoors: e.target.value })
             }
-          ></input>
+            required
+          />
         </div>
 
         <div>
@@ -112,7 +117,7 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
               year: 1990,
               maxSpeed: 0,
               isAutomatic: true,
-              engine: "",
+              engine: "petrol",
               numberOfDoors: 0,
             });
           }}
