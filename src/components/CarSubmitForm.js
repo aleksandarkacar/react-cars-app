@@ -43,8 +43,8 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
           ></input>
         </div>
 
-        <label>Is it Automatic: </label>
         <div>
+          <label>Is it Automatic: </label>
           <input
             type="checkbox"
             value={newCar.isAutomatic}
@@ -55,13 +55,38 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
           ></input>
         </div>
 
-        <div>
-          <label>Engine: </label>
-          <input
-            value={newCar.engine}
+        <fieldset>
+          <div
             onChange={(e) => setNewCar({ ...newCar, engine: e.target.value })}
-          ></input>
-        </div>
+          >
+            <label>Engine: </label>
+            <input
+              type="radio"
+              value="diesel"
+              checked={newCar.engine === "diesel"}
+            />
+            Diesel
+            <input
+              type="radio"
+              value="petrol"
+              checked={newCar.engine === "petrol"}
+            />
+            Petrol
+            <input
+              type="radio"
+              value="electric"
+              checked={newCar.engine === "electric"}
+            />
+            Electric
+            <input
+              type="radio"
+              value="hybrid"
+              checked={newCar.engine === "hybrid"}
+            />
+            Hybrid
+            <div>Selected Option is : {newCar.engine}</div>
+          </div>
+        </fieldset>
 
         <div>
           <label>Number of doors: </label>
