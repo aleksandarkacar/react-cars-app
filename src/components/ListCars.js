@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
-export const ListCars = ({ cars }) => {
+import carsService from "../services/CarsService";
+
+export const ListCars = ({ cars, handleDelete }) => {
   return (
     <table className="center">
       <thead>
@@ -35,6 +37,15 @@ export const ListCars = ({ cars }) => {
                 <Link to={`/edit/${car.id}`}>
                   <button>Edit</button>
                 </Link>
+              </td>
+              <td>
+                <button
+                  onClick={() => {
+                    handleDelete(car.id);
+                  }}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           </tbody>

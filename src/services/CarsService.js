@@ -11,9 +11,17 @@ class CarsService {
 
   get = async (id) => {
     const response = await this.axios.get(`/cars/${id}`);
-    console.log(response);
-    const data = response.data;
-    return data;
+    return response.data;
+  };
+
+  create = async (newCar) => {
+    if (newCar.isAutomatic) {
+      newCar.IsAutomatic = true;
+    } else {
+      newCar.isAutomatic = false;
+    }
+
+    return await this.axios.post("/cars", newCar);
   };
 
   edit = async (editedCar, id) => {
@@ -28,14 +36,8 @@ class CarsService {
     return await this.axios.patch(`/cars/${id}`, editedCar);
   };
 
-  create = async (newCar) => {
-    if (newCar.isAutomatic) {
-      newCar.IsAutomatic = true;
-    } else {
-      newCar.isAutomatic = false;
-    }
-
-    return await this.axios.post("/cars", newCar);
+  delete = async (id) => {
+    return await this.axios.delete(`/cars/${id}`);
   };
 }
 const carsService = new CarsService();

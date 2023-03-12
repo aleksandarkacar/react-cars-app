@@ -14,10 +14,18 @@ export const AppCars = () => {
     handleGetCars();
   }, []);
 
+  const handleDelete = (id) => {
+    const isDeleted = carsService.delete(id);
+    if (isDeleted) {
+      const newList = cars.filter((car) => car.id != id);
+      setCars(newList);
+    }
+  };
+
   return (
     <div className="App">
       <h1>AppCars:</h1>
-      <ListCars cars={cars} />
+      <ListCars cars={cars} handleDelete={handleDelete} />
     </div>
   );
 };
