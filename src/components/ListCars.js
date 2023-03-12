@@ -39,13 +39,7 @@ export const ListCars = ({ cars, handleDelete }) => {
                 </Link>
               </td>
               <td>
-                <button
-                  onClick={() => {
-                    handleDelete(car.id);
-                  }}
-                >
-                  Delete
-                </button>
+                <button onClick={() => handleDelete(car.id)}>Delete</button>
               </td>
             </tr>
           </tbody>
