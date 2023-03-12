@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { CarSubmitForm } from "../components/CarSubmitForm";
 import carsService from "../services/CarsService";
+import { useEffect } from "react";
 
-export const AddCars = () => {
+export const EditCar = ({ id }) => {
+  const params = useParams();
   const [newCar, setNewCar] = useState({
     brand: "",
     model: "",
@@ -13,19 +15,29 @@ export const AddCars = () => {
     engine: "petrol",
     numberOfDoors: 0,
   });
+
+  async function handleGetCars() {
+    const response = await carsService.get(params.id);
+    setNewCar(response);
+  }
+
+  useEffect(() => {
+    handleGetCars();
+  }, []);
+
   const history = useHistory();
 
   const handleOnSubmitCar = (e) => {
     e.preventDefault();
 
-    carsService.create(newCar);
+    carsService.edit(newCar, params.id);
 
     history.push("/cars");
   };
 
   return (
     <div>
-      <h1>Add Cars:</h1>
+      <h1>Add Car:</h1>
       <CarSubmitForm
         newCar={newCar}
         setNewCar={setNewCar}

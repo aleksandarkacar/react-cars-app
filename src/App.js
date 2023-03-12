@@ -1,8 +1,8 @@
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Link, Redirect, Route, Switch } from "react-router-dom";
 import { AppCars } from "./pages/AppCars";
-import { AddCars } from "./pages/AddCars";
+import { AddCar } from "./pages/AddCar";
+import { EditCar } from "./pages/EditCar";
 
 function App() {
   return (
@@ -22,7 +22,10 @@ function App() {
             <AppCars />
           </Route>
           <Route path={"/add"}>
-            <AddCars />
+            <AddCar />
+          </Route>
+          <Route path={"/edit/:id"}>
+            <EditCar />
           </Route>
         </Switch>
       </BrowserRouter>

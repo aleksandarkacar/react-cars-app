@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 export const ListCars = ({ cars }) => {
   return (
-    <table>
+    <table className="center">
       <thead>
         <tr>
           <th>Brand:</th>
@@ -29,6 +30,12 @@ export const ListCars = ({ cars }) => {
               <td>{car.engine}</td>
 
               <td>{car.numberOfDoors}</td>
+
+              <td>
+                <Link to={`/edit/${car.id}`}>
+                  <button>Edit</button>
+                </Link>
+              </td>
             </tr>
           </tbody>
         );

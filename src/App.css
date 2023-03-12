@@ -43,3 +43,8 @@ td {
   border: 1px solid;
   border-collapse: collapse;
 }
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
