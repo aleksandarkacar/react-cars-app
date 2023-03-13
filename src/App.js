@@ -6,7 +6,7 @@ import { EditCar } from "./pages/EditCar";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App center">
       <BrowserRouter>
         <Link to={"/cars"}>
           <button>View Cars</button>

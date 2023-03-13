@@ -105,7 +105,7 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
         </div>
 
         <div>
-          <button type="submit">Submit new Car</button>
+          <button type="submit">Submit</button>
         </div>
       </form>
       <div>
