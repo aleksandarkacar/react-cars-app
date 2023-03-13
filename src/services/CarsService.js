@@ -18,9 +18,8 @@ class CarsService {
     return await this.axios.post("/cars", newCar);
   };
 
-  edit = async (editedCar, id) => {
-    editedCar.id = id;
-    return await this.axios.patch(`/cars/${id}`, editedCar);
+  edit = async (editedCar) => {
+    return await this.axios.patch(`/cars/${editedCar.id}`, editedCar);
   };
 
   delete = async (id) => {

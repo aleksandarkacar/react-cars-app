@@ -30,7 +30,7 @@ export const EditCar = ({ id }) => {
   const handleOnSubmitCar = (e) => {
     e.preventDefault();
 
-    carsService.edit(newCar, params.id);
+    carsService.edit(newCar);
 
     history.push("/cars");
   };

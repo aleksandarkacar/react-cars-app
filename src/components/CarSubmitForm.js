@@ -31,9 +31,13 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
             value={newCar.year}
             onChange={(e) => setNewCar({ ...newCar, year: e.target.value })}
           >
-            {yearArray.map((year) => {
+            {yearArray.map((year, index) => {
               year = year + 1990;
-              return <option value={year}>{year}</option>;
+              return (
+                <option key={index} value={year}>
+                  {year}
+                </option>
+              );
             })}
           </select>
         </div>
