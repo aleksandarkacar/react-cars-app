@@ -1,5 +1,27 @@
 export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
   const yearArray = [...Array(29).keys()];
+  const resetButton = () => {
+    setNewCar({
+      brand: "",
+      model: "",
+      year: 1990,
+      maxSpeed: 0,
+      isAutomatic: true,
+      engine: "petrol",
+      numberOfDoors: 0,
+    });
+  };
+  const previewButton = () => {
+    alert(`Current Values: 
+    brand: ${newCar.brand} 
+    model: ${newCar.model} 
+    year: ${newCar.year} 
+    max speed: ${newCar.maxSpeed} 
+    automatic?: ${newCar.isAutomatic} 
+    engine: ${newCar.engine} 
+    number of doors: ${newCar.numberOfDoors} 
+    `);
+  };
 
   return (
     <div>
@@ -113,37 +135,9 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
         </div>
       </form>
       <div>
-        <button
-          onClick={() => {
-            setNewCar({
-              brand: "",
-              model: "",
-              year: 1990,
-              maxSpeed: 0,
-              isAutomatic: true,
-              engine: "petrol",
-              numberOfDoors: 0,
-            });
-          }}
-        >
-          Reset
-        </button>
+        <button onClick={resetButton}>Reset</button>
 
-        <button
-          onClick={() => {
-            alert(`Current Values: 
-            brand: ${newCar.brand} 
-            model: ${newCar.model} 
-            year: ${newCar.year} 
-            max speed: ${newCar.maxSpeed} 
-            automatic?: ${newCar.isAutomatic} 
-            engine: ${newCar.engine} 
-            number of doors: ${newCar.numberOfDoors} 
-            `);
-          }}
-        >
-          Preview
-        </button>
+        <button onClick={previewButton}>Preview</button>
       </div>
     </div>
   );
