@@ -5,10 +5,10 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
       brand: "",
       model: "",
       year: 1990,
-      maxSpeed: 0,
-      isAutomatic: true,
+      max_speed: 0,
+      isautomatic: true,
       engine: "petrol",
-      numberOfDoors: 0,
+      number_of_doors: 0,
     });
   };
   const previewButton = () => {
@@ -16,10 +16,10 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
     brand: ${newCar.brand} 
     model: ${newCar.model} 
     year: ${newCar.year} 
-    max speed: ${newCar.maxSpeed} 
-    automatic?: ${newCar.isAutomatic} 
+    max speed: ${newCar.max_speed} 
+    automatic?: ${newCar.isautomatic} 
     engine: ${newCar.engine} 
-    number of doors: ${newCar.numberOfDoors} 
+    number of doors: ${newCar.number_of_doors} 
     `);
   };
 
@@ -68,8 +68,10 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
           <label>Max Speed: </label>
           <input
             type="number"
-            value={newCar.maxSpeed}
-            onChange={(e) => setNewCar({ ...newCar, maxSpeed: e.target.value })}
+            value={newCar.max_speed}
+            onChange={(e) =>
+              setNewCar({ ...newCar, max_speed: e.target.value })
+            }
           ></input>
         </div>
 
@@ -77,10 +79,10 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
           <label>Is it Automatic: </label>
           <input
             type="checkbox"
-            value={newCar.isAutomatic}
-            checked={newCar.isAutomatic}
+            value={newCar.isautomatic}
+            checked={newCar.isautomatic}
             onChange={(e) => {
-              setNewCar({ ...newCar, isAutomatic: !newCar.isAutomatic });
+              setNewCar({ ...newCar, isautomatic: !newCar.isautomatic });
             }}
           ></input>
         </div>
@@ -122,9 +124,9 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
           <label>Number of doors: </label>
           <input
             type="number"
-            value={newCar.numberOfDoors}
+            value={newCar.number_of_doors}
             onChange={(e) =>
-              setNewCar({ ...newCar, numberOfDoors: e.target.value })
+              setNewCar({ ...newCar, number_of_doors: e.target.value })
             }
             required
           />

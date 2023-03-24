@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import carsService from "../services/CarsService";
 
 export const ListCars = ({ cars, handleDelete }) => {
+  console.log(cars);
   return (
     <table className="center">
       <thead>
@@ -25,13 +26,13 @@ export const ListCars = ({ cars, handleDelete }) => {
 
               <td>{car.year}</td>
 
-              <td>{car.maxSpeed}</td>
+              <td>{car.max_speed}</td>
 
-              <td>{car.isAutomatic ? "Yes" : "No"}</td>
+              <td>{car.isautomatic ? "Yes" : "No"}</td>
 
               <td>{car.engine}</td>
 
-              <td>{car.numberOfDoors}</td>
+              <td>{car.number_of_doors}</td>
 
               <td>
                 <Link to={`/edit/${car.id}`}>
