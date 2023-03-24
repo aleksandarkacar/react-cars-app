@@ -31,8 +31,6 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
           <input
             value={newCar.brand}
             onChange={(e) => setNewCar({ ...newCar, brand: e.target.value })}
-            required
-            minLength="2"
           ></input>
         </div>
 
@@ -41,8 +39,6 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
           <input
             value={newCar.model}
             onChange={(e) => setNewCar({ ...newCar, model: e.target.value })}
-            required
-            minLength="2"
           ></input>
         </div>
 
@@ -128,7 +124,6 @@ export const CarSubmitForm = ({ newCar, setNewCar, handleOnSubmitCar }) => {
             onChange={(e) =>
               setNewCar({ ...newCar, number_of_doors: e.target.value })
             }
-            required
           />
         </div>
 

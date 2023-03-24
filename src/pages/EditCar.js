@@ -15,6 +15,7 @@ export const EditCar = ({ id }) => {
     engine: "petrol",
     number_of_doors: 0,
   });
+  const [carValidationErrors, setCarValidationErrors] = useState("");
 
   async function handleGetCars() {
     const response = await carsService.get(params.id);
@@ -27,17 +28,23 @@ export const EditCar = ({ id }) => {
 
   const history = useHistory();
 
-  const handleOnSubmitCar = (e) => {
+  const handleOnSubmitCar = async (e) => {
     e.preventDefault();
-
-    carsService.edit(newCar);
-
-    history.push("/cars");
+    try {
+      await carsService.edit(newCar);
+      history.push("/cars");
+    } catch (err) {
+      if (err.response.status == 422) {
+        console.log(err.response.data.message);
+        setCarValidationErrors(err.response.data.message);
+      }
+    }
   };
 
   return (
     <div>
       <h1>Add Car:</h1>
+      <h3 style={{ color: "red" }}>{carValidationErrors}</h3>
       <CarSubmitForm
         newCar={newCar}
         setNewCar={setNewCar}

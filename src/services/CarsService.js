@@ -19,7 +19,7 @@ class CarsService {
   };
 
   edit = async (editedCar) => {
-    return await this.axios.patch(`/cars/${editedCar.id}`, editedCar);
+    return await this.axios.put(`/cars/${editedCar.id}`, editedCar);
   };
 
   delete = async (id) => {
