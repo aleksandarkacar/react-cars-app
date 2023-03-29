@@ -35,7 +35,8 @@ export const EditCar = ({ id }) => {
       history.push("/cars");
     } catch (err) {
       if (err.response.status == 422) {
-        console.log(err.response.data.message);
+        console.log("random console");
+        console.log({ err });
         setCarValidationErrors(err.response.data.message);
       }
     }

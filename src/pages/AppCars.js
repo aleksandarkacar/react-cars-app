@@ -2,14 +2,18 @@ import carsService from "../services/CarsService";
 import { useContext, useEffect, useState } from "react";
 import { confirmAlert } from "react-confirm-alert";
 import { ListCars } from "../components/ListCars";
+import { useDispatch, useSelector } from "react-redux";
+import { carsSelector } from "../store/cars/selectors";
+import { setCars } from "../store/cars/slice";
 
 export const AppCars = () => {
-  const [cars, setCars] = useState([]);
-
+  const cars = useSelector(carsSelector);
   async function handleGetCars() {
     const response = await carsService.getAll();
-    setCars(response);
+    dispatch(setCars(response));
   }
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     handleGetCars();
