@@ -25,6 +25,13 @@ class CarsService {
   delete = async (id) => {
     return await this.axios.delete(`/cars/${id}`);
   };
+
+  searchAll = async (brand, model) => {
+    const response = await this.axios.get(
+      `/cars?brand=${brand}&model=${model}`
+    );
+    return response.data;
+  };
 }
 const carsService = new CarsService();
 

@@ -5,6 +5,7 @@ import { ListCars } from "../components/ListCars";
 import { useDispatch, useSelector } from "react-redux";
 import { carsSelector } from "../store/cars/selectors";
 import { setCars } from "../store/cars/slice";
+import { CarsSearch } from "../components/CarsSearch";
 
 export const AppCars = () => {
   const cars = useSelector(carsSelector);
@@ -44,6 +45,7 @@ export const AppCars = () => {
   return (
     <div className="App">
       <h1>AppCars:</h1>
+      <CarsSearch></CarsSearch>
       <ListCars cars={cars} handleDelete={handleDelete} />
     </div>
   );
