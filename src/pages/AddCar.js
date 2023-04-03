@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { CarSubmitForm } from "../components/CarSubmitForm";
-import carsService from "../services/CarsService";
+import { useDispatch } from "react-redux";
+import { performCreateCars } from "../store/cars/slice";
 
 export const AddCar = () => {
   const [newCar, setNewCar] = useState({
@@ -15,18 +16,19 @@ export const AddCar = () => {
   });
   const [carValidationErrors, setCarValidationErrors] = useState("");
   const history = useHistory();
+  const dispatch = useDispatch();
 
-  const handleOnSubmitCar = async (e) => {
+  const handleOnSubmitCar = (e) => {
     e.preventDefault();
-    try {
-      await carsService.create(newCar);
-      history.push("/cars");
-    } catch (err) {
-      if (err.response.status == 422) {
-        console.log(err.response.data.message);
-        setCarValidationErrors(err.response.data.message);
-      }
-    }
+    console.log("Pre dispatch-a");
+    dispatch(performCreateCars(newCar));
+    console.log("Posle dispatch");
+    history.push("/cars");
+    // } catch (err) { // Treba prebaciti ovo negde drugde
+    //   if (err.response.status == 422) {
+    //     console.log(err.response.data.message);
+    //     setCarValidationErrors(err.response.data.message);
+    //   }
   };
 
   // async function handleSubmit() {

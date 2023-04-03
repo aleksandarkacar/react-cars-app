@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import carsService from "../services/CarsService";
 
 export const ListCars = ({ cars, handleDelete }) => {
   return (

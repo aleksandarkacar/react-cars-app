@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { CarSubmitForm } from "../components/CarSubmitForm";
-import carsService from "../services/CarsService";
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { carByIdSelector } from "../store/cars/selectors";
+import { performEditCars, performSetCars } from "../store/cars/slice";
 
-export const EditCar = ({ id }) => {
+export const EditCar = () => {
   const params = useParams();
+  const selectedCar = useSelector((state) => carByIdSelector(state, params.id));
+  const dispatch = useDispatch();
+  const [carValidationErrors, setCarValidationErrors] = useState("");
   const [newCar, setNewCar] = useState({
     brand: "",
     model: "",
@@ -15,11 +20,9 @@ export const EditCar = ({ id }) => {
     engine: "petrol",
     number_of_doors: 0,
   });
-  const [carValidationErrors, setCarValidationErrors] = useState("");
 
-  async function handleGetCars() {
-    const response = await carsService.get(params.id);
-    setNewCar(response);
+  function handleGetCars() {
+    setNewCar(selectedCar);
   }
 
   useEffect(() => {
@@ -28,23 +31,14 @@ export const EditCar = ({ id }) => {
 
   const history = useHistory();
 
-  const handleOnSubmitCar = async (e) => {
+  const handleOnSubmitCar = (e) => {
     e.preventDefault();
-    try {
-      await carsService.edit(newCar);
-      history.push("/cars");
-    } catch (err) {
-      if (err.response.status == 422) {
-        console.log("random console");
-        console.log({ err });
-        setCarValidationErrors(err.response.data.message);
-      }
-    }
+    dispatch(performEditCars(newCar));
   };
 
   return (
     <div>
-      <h1>Add Car:</h1>
+      <h1>Edit Car:</h1>
       <h3 style={{ color: "red" }}>{carValidationErrors}</h3>
       <CarSubmitForm
         newCar={newCar}

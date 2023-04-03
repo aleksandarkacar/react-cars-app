@@ -30,7 +30,7 @@ export const CarsSearch = () => {
           onChange={(e) => setSearchModel(e.target.value)}
         />
       </div>
-      <button onClick={() => handleSearch()}>Search</button>;
+      <button onClick={() => handleSearch()}>Search</button>
     </div>
   );
 };

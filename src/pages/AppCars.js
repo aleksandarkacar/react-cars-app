@@ -4,14 +4,15 @@ import { confirmAlert } from "react-confirm-alert";
 import { ListCars } from "../components/ListCars";
 import { useDispatch, useSelector } from "react-redux";
 import { carsSelector } from "../store/cars/selectors";
-import { setCars } from "../store/cars/slice";
+import { performDeleteCars, performSetCars } from "../store/cars/slice";
 import { CarsSearch } from "../components/CarsSearch";
 
 export const AppCars = () => {
   const cars = useSelector(carsSelector);
   async function handleGetCars() {
-    const response = await carsService.getAll();
-    dispatch(setCars(response));
+    //   // const response = await carsService.getAll();
+    //   // dispatch(setCars(response));
+    dispatch(performSetCars());
   }
 
   const dispatch = useDispatch();
@@ -28,11 +29,7 @@ export const AppCars = () => {
         {
           label: "Yes",
           onClick: () => {
-            const isDeleted = carsService.delete(id);
-            if (isDeleted) {
-              const newList = cars.filter((car) => car.id != id);
-              setCars(newList);
-            }
+            dispatch(performDeleteCars(id));
           },
         },
         {
